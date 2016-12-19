@@ -14,11 +14,12 @@ body{
 	text-align: center;
 	visibility: visible;
 	opacity: .25;
-	transition: opacity .5s;
+	transition: opacity .5s, visibility .5s;
 }
 
 #header.fade-out{
 	opacity: 0;
+	visibility: hidden;
 }
 
 
@@ -37,20 +38,22 @@ body{
 	z-index: 1;
 	background-color: #333;
 	position: fixed;
-	top: 100px;
-	left: 7px;
-	opacity: .8;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 275px;
+	opacity: .8;	
 	padding-right: 20px;
-	-webkit-transition: width .5s, height 1s;
-    transition: width .5s, height 1s;
-}
-
-#nav-container.open{
-	width: 250px;
+	padding-top: 20px;
+	-webkit-transition: width .5s, height .5s;
+    transition: width .5s, height .5s;
+    overflow: scroll;
+    font-family: Arial, sans-serif;
 }
 
 #nav-container.closed{
-	width: 50px;
+	width: 80px;
+	height: 60px;
 }
 
 .hidden{
@@ -60,8 +63,8 @@ body{
 #nav-icon{
 	font-size: 40px;
 	float: right;
-    transition-delay: .2s;
-    transition-duration: .2s;
+    transition-delay: .175s;
+    transition-duration: .325s;
 	
 }
 
@@ -78,7 +81,7 @@ a{
 }
 
 #nav-catagories{
-	clear: both;
+	float: left;
 	font-size: 30px;
 	padding-bottom: 10px;
 }
@@ -94,14 +97,19 @@ a{
 .nav-catagories-icon:hover{
 	color: #09f;
 }
+#nav-list{
+	clear: both;
+}
 
 .nav-list-item{
 	list-style: none;
-	padding-bottom: 7px;
-	padding-right: 5px;
+	padding-bottom: 5px;
+	padding-right: 3px;
 }
 
-.nav-list-name{
-	font-family: Arial, sans-serif;
-	text-align: left;
+@media (min-height: 650px) {
+	#nav-container{
+		overflow: hidden;
+	}
+	
 }
