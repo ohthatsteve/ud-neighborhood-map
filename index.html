@@ -6,8 +6,8 @@
 	<link href="https://fonts.googleapis.com/css?family=Marvel" rel="stylesheet">
 	<link rel = "stylesheet" href = "css/style.css">
 </head>
-<body data-bind = "click: fadeHeader">
-	<div id = "map"></div>
+<body>
+	<div id = "map" data-bind = "click: fadeHeader"></div>
 	<h1 id = "header">DOWNTOWN SYRACUSE</h1>
 	<div id = "nav-container" class = "open">
 		<span id = "nav-icon" class = "open" data-bind = "click: toggleNav">►</span>
@@ -22,8 +22,6 @@
 				</ul>
 		</div>
 	</div>
-	
-
 </body>
 <script src = "js/lib/knockout-3.4.0.js"></script>
 <script src = "js/lib/jquery-3.1.1.min.js"></script>
