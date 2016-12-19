@@ -14,14 +14,11 @@ body{
 	text-align: center;
 	visibility: visible;
 	opacity: .25;
-	transition:  visibility .25s ease-in-out;
-   -moz-transition:  visibility .25s ease-in-out;
-   -webkit-transition:  visibility .25s ease-in-out;
+	transition: opacity .5s;
 }
 
 #header.fade-out{
 	opacity: 0;
-	visibility: hidden;
 }
 
 
@@ -63,8 +60,6 @@ body{
 #nav-icon{
 	font-size: 40px;
 	float: right;
-/*	-webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
-   /*transform: rotate(180deg);*/
     transition-delay: .2s;
     transition-duration: .2s;
 	
@@ -81,7 +76,6 @@ a{
 	text-decoration: none;
 	cursor: pointer;
 }
-
 
 #nav-catagories{
 	clear: both;
@@ -107,13 +101,7 @@ a{
 	padding-right: 5px;
 }
 
-
 .nav-list-name{
 	font-family: Arial, sans-serif;
 	text-align: left;
-}
-
-.nav-list-address{
-	text-align: right;
-
 }
