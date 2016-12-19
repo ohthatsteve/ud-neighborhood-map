@@ -1,0 +1,35 @@
+<html>
+<head>
+	<meta charset = "UTF-8">
+	<meta name = "viewport" content = "width=device-width, initial-scale=1">
+	<title>Neighborhood Map</title>
+	<link href="https://fonts.googleapis.com/css?family=Marvel" rel="stylesheet">
+	<link rel = "stylesheet" href = "css/style.css">
+</head>
+<body data-bind = "click: fadeHeader">
+	<div id = "map"></div>
+	<h1 id = "header">DOWNTOWN SYRACUSE</h1>
+	<div id = "nav-container" class = "open">
+		<span id = "nav-icon" class = "open" data-bind = "click: toggleNav">►</span>
+		<div id="nav-content">
+			<div id="nav-catagories" data-bind = "foreach: catagories">
+				<a class = "nav-catagories-icon" data-bind = "text:icon, click: $parent.showCatagory"></a>
+			</div>
+				<ul id = "nav-list" data-bind = "foreach: initialLocations">
+					<li class = "nav-list-item" data-bind = "ifnot: error">
+						<a><p class = "nav-list-name" data-bind = "text: name, click:$parent.showMarker"></p></a>
+					</li>
+				</ul>
+		</div>
+	</div>
+	
+
+</body>
+<script src = "js/lib/knockout-3.4.0.js"></script>
+<script src = "js/lib/jquery-3.1.1.min.js"></script>
+<script src = "js/data.js"></script>
+<script src = "js/app.js"></script>
+ <script async defer
+     src = "https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyBqxSz8zf3XFUyBR7LVOswrSz1gLDueSRM&callback=initMap">
+    </script>
+</html>
