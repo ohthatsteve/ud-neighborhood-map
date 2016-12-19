@@ -7,7 +7,7 @@ function initMap(){
 	var infowindow;
 	//Retrieve map div and give it an initial location
 	map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 43.042, lng: -76.123},
+          center: {lat : 43.0447208, lng : -76.14674350000001},
           zoom: 15,
           styles: mapStyle,
           mapTypeControlOptions: { mapTypeIds: [] }
@@ -51,7 +51,7 @@ function initMap(){
 					location.marker.addListener('click', function(){
 						location.marker.infowindow.open(map, location.marker);
 					})
-
+					console.log(location);
 				}
 				
 				else{
@@ -130,7 +130,7 @@ var ViewModel = function(){
 			$navContent.toggleClass('hidden')
 		}, 250);
 		
-		$navContainer.toggleClass('open closed');
+		$navContainer.toggleClass('open');
 		$navIcon.toggleClass('open');
 	}
 
