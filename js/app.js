@@ -44,7 +44,7 @@ function initMap(){
 
 					//Create infowindow for each marker
 					location.marker.infowindow = new google.maps.InfoWindow({
-						content: '<div class = "info-window"> <h3>' + location.name + ' </h3></div>'
+						content: '<div class = "info-window"> <h3>' + location.name + ' </h3><img><p>Address:  ' + location.address + '</p></div>'
 					})
 
 					//Open infowindow when you click the marker
@@ -134,7 +134,6 @@ var ViewModel = function(){
 		$navIcon.toggleClass('open');
 	}
 
-	
 	//Fade header after any click
 	this.fadeHeader = function(){
 		var $header = $('#header');
