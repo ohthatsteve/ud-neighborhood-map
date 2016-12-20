@@ -15,8 +15,8 @@
 			<div id="nav-catagories" data-bind = "foreach: catagories">
 				<a class = "nav-catagories-icon" data-bind = "text:icon, click: $parent.showCatagory"></a>
 			</div>
-				<ul id = "nav-list" data-bind = "foreach: initialLocations">
-					<li class = "nav-list-item" data-bind = "ifnot: error">
+				<ul id = "nav-list" data-bind = "foreach: locationArray">
+					<li class = "nav-list-item" data-bind = "if: active">
 						<a><p class = "nav-list-name" data-bind = "text: name, click:$parent.showMarker"></p></a>
 					</li>
 				</ul>
