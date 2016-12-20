@@ -130,7 +130,7 @@ var ViewModel = function(){
 			$navContent.toggleClass('hidden')
 		}, 250);
 		
-		$navContainer.toggleClass('open');
+		$navContainer.toggleClass('closed');
 		$navIcon.toggleClass('open');
 	}
 
