@@ -5,60 +5,60 @@ var initialLocations = [{
 	name: 'MOST',
 	address: '500 S Franklin St',
 	catagory: 'entertainment',
-	error: ko.observable(false)
+	active: ko.observable(true)
 },{
 	name: 'Oncenter War Memorial',
 	address: '800 S State St',
 	catagory: 'entertainment',
-	error: ko.observable(false)	
+	active: ko.observable(true)
 },{
 	name: 'Everson Museum of Art',
 	address: '401 Harrison St',
 	catagory: 'entertainment',
-	error: ko.observable(false)
+	active: ko.observable(true)
 },{
 	name: 'Carrier Dome',
 	address: '900 Irving Ave',
 	catagory: 'entertainment',
-	error: ko.observable(false)
+	active: ko.observable(true)
 },{
 	name: 'Dinosaur BBQ',
 	address: '246 E Willow St',
 	catagory: 'dining',
-	error: ko.observable(false)
+	active: ko.observable(true)
 },{
 	name: 'Recess Coffee',
 	address: '110 Montgomery St #103',
 	catagory: 'dining' ,
-	error: ko.observable(false)	
+	active: ko.observable(true)
 },{
 	name: 'Cafe Kubal',
 	address: '401 S Salina St',
 	catagory: 'dining',
-	error: ko.observable(false)	
+	active: ko.observable(true)
 },{
 	name: 'Roji Tea Lounge',
 	address: '108 E Washington St #2',
 	catagory: 'dining',
-	error: ko.observable(false)	
+	active: ko.observable(true)
 },{
 	name: 'Strong Hearts Cafe',
 	address: '719 E Genesee St',
 	catagory: 'dining',
-	error: ko.observable(false)	
+	active: ko.observable(true)
 },{
 	name: 'J. Ryan\'s',
 	address: '253 E Water St',
 	catagory: 'nightlife',
-	error: ko.observable(false) 	
+	active: ko.observable(true) 	
 },{
 	name: 'Modern Malt',
 	address: '325 S Clinton St',
 	catagory: 'nightlife',
-	error: ko.observable(false)	
+	active: ko.observable(true)
 },{
 	name: 'asdfjkae',
-	error: ko.observable(false)
+	active: ko.observable(true)
 }];
 
 //Array of catagories used for filtering
