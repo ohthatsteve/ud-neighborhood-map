@@ -1,5 +1,5 @@
 var map;
-
+var locationArray = ko.observableArray();
 //Function to be ran after map is initialized
 function initMap(){
 	
@@ -34,38 +34,51 @@ function initMap(){
 										lng: results['0'].geometry.location.lng()
 										}
 					
-					//Create markers for each location
-					location.marker = new google.maps.Marker({
-						position: location.latLng,
-						map: null,
-						animation: google.maps.Animation.DROP,
-						title: location.name
-					})
+					addMarker(location);
+					addInfoWindow(location);					
 
-					//Create infowindow for each marker
-					location.marker.infowindow = new google.maps.InfoWindow({
-						content: '<div class = "info-window"> <h3>' + location.name + ' </h3><img><p>Address:  ' + location.address + '</p></div>'
-					})
-
-					//Open infowindow when you click the marker
-					location.marker.addListener('click', function(){
-						location.marker.infowindow.open(map, location.marker);
-					})
-					console.log(location);
+					//Add current location to the observable array
+					locationArray.push(location);	
 				}
 				
-				else{
-					location.error(true);
-				}
 				
 			}
 		)
 	})
 
+	function addMarker(location){
+		//Create markers for each location
+		location.marker = new google.maps.Marker({
+			position: location.latLng,
+			map: null,
+			animation: google.maps.Animation.DROP,
+			title: location.name
+		})
+	};
+
+	function addInfoWindow(location){
+		//Create infowindow for each marker
+		location.marker.infowindow = new google.maps.InfoWindow({
+			content: '<div class = "info-window"> <h3>' + location.name + ' </h3><img><p>Address:  ' + location.address + '</p></div>'
+		})
+		
+		//Open infowindow when you click the marker
+		location.marker.addListener('click', function(){
+			location.marker.infowindow.open(map, location.marker);
+			
+			location.marker.setAnimation(google.maps.Animation.BOUNCE);
+			setTimeout(function(){
+				location.marker.setAnimation(null);
+			}, 1500);
+		})
+	};
+
+
 };
 		
 var ViewModel = function(){ 
 
+	
 	//Display or hide marker and infowindow of location clicked on list
 	this.showMarker = function(){
 		//If the marker isn't displayed, display it
@@ -93,9 +106,14 @@ var ViewModel = function(){
 
 		//If catagory is inactive, display all markers for selected catagory
 		if(!active){
-			initialLocations.forEach(function(location){
+			locationArray().forEach(function(location){
 				if(location.catagory == currentCatagory){
 					location.marker.setMap(map);
+					location.active(true);
+				}
+				else{
+					location.marker.setMap(null);
+					location.active(false);
 				}
 			})
 		
@@ -105,7 +123,7 @@ var ViewModel = function(){
 		
 		//Else remove markers from selected catagory from the map
 		else{
-			initialLocations.forEach(function(location){
+			locationArray().forEach(function(location){
 				if(location.catagory == currentCatagory){
 					location.marker.setMap(null);
 					location.marker.infowindow.close();
