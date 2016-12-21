@@ -38,21 +38,24 @@ body{
 	z-index: 1;
 	background-color: #333;
 	position: fixed;
-	top: 100px;
+	top: 0;
 	left: 0;
-	height: 500px;
+	height: 100%;
 	width: 275px;
 	opacity: .8;	
 	padding-top: 20px;
+	padding-right: 20px; 
 	-webkit-transition: width .5s, height .5s;
     transition: width .5s, height .5s;
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden; 
     font-family: Arial, sans-serif;
 }
 
 #nav-container.closed{
 	width: 70px;
 	height: 60px;
+	overflow: hidden;
 }
 
 .hidden{
