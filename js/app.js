@@ -69,6 +69,7 @@ function initMap(){
 			
 			//Create new Location objects for first 8 results
 			function callback(results){
+				console.log(results);
 				for(var e = 0; e < 8; e++){
 					newLocation = new Location(results[e]);
 					addMarker(newLocation);
@@ -116,7 +117,7 @@ var ViewModel = function(){
 	
 	//Display or hide marker and infowindow of location clicked on list
 	this.showMarker = function(){
-		//If the marker isn't displayed, display it
+		//If the marker isn't displayed, display it and center the viewport on it
 		if(this.marker.map == null){
 			this.marker.setMap(map);
 			map.setCenter(this.latLng);
@@ -137,16 +138,14 @@ var ViewModel = function(){
 	this.showCatagory = function(){
 		currentCatagory = this.type;
 		active = this.active;
-		console.log(currentCatagory);
+		
 		//If catagory is inactive, display all markers for selected catagory
 		if(!active){
 			locationArray().forEach(function(location){
 				if(location.type == currentCatagory){
-					location.marker.setMap(map);
 					location.active(true);
 				}
 				else{
-					location.marker.setMap(null);
 					location.active(false);
 				}
 			})
