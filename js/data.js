@@ -80,7 +80,7 @@ var catagories = [{
 	active: false
 },{
 	type: 'store',
-	icon: '🎭',
+	icon: '🛍',
 	active: false
 }];
 
