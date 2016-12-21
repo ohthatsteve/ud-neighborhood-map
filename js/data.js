@@ -1,78 +1,86 @@
 //Long arrays of data are moved to a seperate file to improve readability
 
-//Hardcoded location data array
+/**Hardcoded location data array
 var initialLocations = [{
 	name: 'MOST',
 	address: '500 S Franklin St',
 	catagory: 'entertainment',
+	web: 'http://www.most.org/',
 	active: ko.observable(true)
 },{
 	name: 'Oncenter War Memorial',
 	address: '800 S State St',
 	catagory: 'entertainment',
+	web: 'http://www.oncenter.org/',
 	active: ko.observable(true)
 },{
 	name: 'Everson Museum of Art',
 	address: '401 Harrison St',
 	catagory: 'entertainment',
+	web: 'http://www.everson.org/',
 	active: ko.observable(true)
 },{
 	name: 'Carrier Dome',
 	address: '900 Irving Ave',
 	catagory: 'entertainment',
+	web: 'http://www.carrierdome.com/',
 	active: ko.observable(true)
 },{
 	name: 'Dinosaur BBQ',
-	address: '246 E Willow St',
+	address: '246 W Willow St',
 	catagory: 'dining',
+	web: 'http://www.dinosaurbarbque.com/',
 	active: ko.observable(true)
 },{
 	name: 'Recess Coffee',
-	address: '110 Montgomery St #103',
+	address: '110 Montgomery St',
 	catagory: 'dining' ,
+	web: 'http://recesscoffee.com/',
 	active: ko.observable(true)
 },{
 	name: 'Cafe Kubal',
 	address: '401 S Salina St',
 	catagory: 'dining',
+	web: 'http://www.cafekubal.com/',
 	active: ko.observable(true)
 },{
 	name: 'Roji Tea Lounge',
-	address: '108 E Washington St #2',
+	address: '108 E Washington St',
 	catagory: 'dining',
+	web: 'https://www.facebook.com/rojitealounge',
 	active: ko.observable(true)
 },{
 	name: 'Strong Hearts Cafe',
 	address: '719 E Genesee St',
 	catagory: 'dining',
+	web: 'http://www.strongheartscafe.com/',
 	active: ko.observable(true)
 },{
 	name: 'J. Ryan\'s',
 	address: '253 E Water St',
-	catagory: 'nightlife',
+	catagory: 'dining',
+	web: 'http://www.jryanspub.com/',
 	active: ko.observable(true) 	
 },{
 	name: 'Modern Malt',
 	address: '325 S Clinton St',
-	catagory: 'nightlife',
+	catagory: 'dining',
+	web: 'http://eatdrinkmalt.com/',
 	active: ko.observable(true)
 },{
 	name: 'asdfjkae',
+	web: '',
 	active: ko.observable(true)
 }];
-
+**/
 //Array of catagories used for filtering
 var catagories = [{
-	type: 'dining',
+	type: 'restaurant',
 	icon: '🍽',
 	active: false
 },{
-	type: 'entertainment',
+	type: 'store',
 	icon: '🎭',
-	active: false
-},{
-	type: 'nightlife',
-	icon: '🍸',
 	active: false
 }];
 

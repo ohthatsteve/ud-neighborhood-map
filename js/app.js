@@ -1,50 +1,85 @@
 var map;
 var locationArray = ko.observableArray();
+
+//Model for location information
+var Location = function(data){
+	this.name  = data.name,
+	this.address = data.vicinity,
+	this.rating = data.rating,
+	this.hours = data.opening_hours,
+	lat = data.geometry.location.lat();
+	lng = data.geometry.location.lng();
+	this.latLng = {
+		lat: lat,
+		lng: lng
+	},
+	this.active = ko.observable(true),
+
+self = this;
+this.img = getImgUrl();
+
+//If the location has a photos property, get that image url, if not use streetview
+function getImgUrl(){
+	if(data.photos){
+		imgUrl = data.photos[0].getUrl({'maxWidth': 500, 'maxHeight': 300})
+	}
+	else{
+	imgUrl = 'http://maps.googleapis.com/maps/api/streetview?size=600x300&location=' + self.address;
+	}
+	return imgUrl;
+	}	
+}
+
+
+
 //Function to be ran after map is initialized
 function initMap(){
-	
-	var geocoder;
 	var infowindow;
+	var types = ['restaurant', 'store'];
+	var lat = 43.0485152;
+	var	lng = -76.1574217;
+	var latlng = lat + ','+ lng;
+
 	//Retrieve map div and give it an initial location
 	map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat : 43.0447208, lng : -76.14674350000001},
-          zoom: 15,
-          styles: mapStyle,
-          mapTypeControlOptions: { mapTypeIds: [] }
+		center: {lat : lat,
+		lng : lng},
+		zoom: 15,
+		styles: mapStyle,
+		mapTypeControlOptions: { mapTypeIds: [] }
 
-        });
-	
-	//Initialize geocoder after the map is initialized to retrieve latlng information
-	geocoder = new google.maps.Geocoder();
-	
+	});
+	service = new google.maps.places.PlacesService(map);
+	for(var i = 0; i < types.length; i++){
+		getLocations(types[i]);
 
-	//Request and store latlng data for each location in array
-	initialLocations.forEach(function(location){
-		
-		geocoder.geocode(
-		{
-			address: location.address,
-			componentRestrictions: {locality: 'Syracuse'}
-		}, 
-			function(results, status){
-				//If the location is found
-				if(location.address && status == google.maps.GeocoderStatus.OK){
-					//Store latlng data as an object in the object for the current location
-					location.latLng = { lat: results['0'].geometry.location.lat(),
-										lng: results['0'].geometry.location.lng()
-										}
-					
-					addMarker(location);
-					addInfoWindow(location);					
+	}
+		function getLocations(type){
+		//Request object for places nearby search	
+		request = {
+			location: map.center,
+			radius: '500',
+			type: type,
+			keyword: 'photos'
 
-					//Add current location to the observable array
-					locationArray.push(location);	
-				}
-				
-				
 			}
-		)
-	})
+			
+			//Retrieve location information
+			service.nearbySearch(request, callback);
+			
+			//Create new Location objects for first 8 results
+			function callback(results){
+				for(var e = 0; e < 8; e++){
+					newLocation = new Location(results[e]);
+					addMarker(newLocation);
+					addInfoWindow(newLocation);
+					newLocation.type = type;
+					locationArray.push(newLocation);
+				}
+			
+			}
+	}
+	
 
 	function addMarker(location){
 		//Create markers for each location
@@ -59,22 +94,22 @@ function initMap(){
 	function addInfoWindow(location){
 		//Create infowindow for each marker
 		location.marker.infowindow = new google.maps.InfoWindow({
-			content: '<div class = "info-window"> <h3>' + location.name + ' </h3><img><p>Address:  ' + location.address + '</p></div>'
+			content: '<div class = "info-window"><h3>' + location.name + ' </h3><img class = "info-window-top-img" src = "'+location.img+'"></div>'
 		})
-		
-		//Open infowindow when you click the marker
+
+
+		//Add click event listener to marker to open infowindow
 		location.marker.addListener('click', function(){
-			location.marker.infowindow.open(map, location.marker);
-			
-			location.marker.setAnimation(google.maps.Animation.BOUNCE);
-			setTimeout(function(){
-				location.marker.setAnimation(null);
+		location.marker.infowindow.open(map, location.marker);
+		location.marker.setAnimation(google.maps.Animation.BOUNCE);
+		setTimeout(function(){
+			location.marker.setAnimation(null);
 			}, 1500);
 		})
-	};
 
 
-};
+	}
+}
 		
 var ViewModel = function(){ 
 
@@ -84,7 +119,6 @@ var ViewModel = function(){
 		//If the marker isn't displayed, display it
 		if(this.marker.map == null){
 			this.marker.setMap(map);
-			this.marker.infowindow.open(map, this.marker);
 			map.setCenter(this.latLng);
 		}
 
@@ -103,11 +137,11 @@ var ViewModel = function(){
 	this.showCatagory = function(){
 		currentCatagory = this.type;
 		active = this.active;
-
+		console.log(currentCatagory);
 		//If catagory is inactive, display all markers for selected catagory
 		if(!active){
 			locationArray().forEach(function(location){
-				if(location.catagory == currentCatagory){
+				if(location.type == currentCatagory){
 					location.marker.setMap(map);
 					location.active(true);
 				}
@@ -128,6 +162,7 @@ var ViewModel = function(){
 					location.marker.setMap(null);
 					location.marker.infowindow.close();
 				}
+				location.active(true);
 			})
 		
 		//Set selected catagory to inactive
