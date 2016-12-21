@@ -69,7 +69,6 @@ function initMap(){
 			
 			//Create new Location objects for first 8 results
 			function callback(results){
-				console.log(results);
 				for(var e = 0; e < 8; e++){
 					newLocation = new Location(results[e]);
 					addMarker(newLocation);
@@ -111,16 +110,21 @@ function initMap(){
 
 	}
 }
-		
+
 var ViewModel = function(){ 
 
-	
+	var currentLocation = null;
 	//Display or hide marker and infowindow of location clicked on list
 	this.showMarker = function(){
+		if(currentLocation == null){
+			currentLocation = this;
+		}
 		//If the marker isn't displayed, display it and center the viewport on it
 		if(this.marker.map == null){
+			currentLocation.marker.setMap(null);
 			this.marker.setMap(map);
 			map.setCenter(this.latLng);
+			currentLocation = this;
 		}
 
 
