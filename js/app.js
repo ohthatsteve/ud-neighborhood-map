@@ -125,6 +125,7 @@ var ViewModel = function(){
 			currentLocation.marker.setMap(null);
 			this.marker.setAnimation(google.maps.Animation.DROP);
 			this.marker.setMap(map);
+			this.marker.infowindow.open(map, this.marker);
 			map.setCenter(this.latLng);
 			currentLocation = this;
 			toggleNav();
