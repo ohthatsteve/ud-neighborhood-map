@@ -127,6 +127,7 @@ var ViewModel = function(){
 			this.marker.setMap(map);
 			map.setCenter(this.latLng);
 			currentLocation = this;
+			toggleNav();
 		}
 
 
