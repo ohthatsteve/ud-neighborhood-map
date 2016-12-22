@@ -1,4 +1,6 @@
 var map;
+
+//Array to be populated with location objects
 var locationArray = ko.observableArray();
 
 //Model for location information
@@ -76,7 +78,6 @@ function initMap(){
 					newLocation.type = type;
 					locationArray.push(newLocation);
 				}
-			
 			}
 	}
 	
@@ -86,7 +87,6 @@ function initMap(){
 		location.marker = new google.maps.Marker({
 			position: location.latLng,
 			map: null,
-			animation: google.maps.Animation.DROP,
 			title: location.name
 		})
 	};
@@ -113,6 +113,7 @@ function initMap(){
 
 var ViewModel = function(){ 
 
+
 	var currentLocation = null;
 	//Display or hide marker and infowindow of location clicked on list
 	this.showMarker = function(){
@@ -122,6 +123,7 @@ var ViewModel = function(){
 		//If the marker isn't displayed, display it and center the viewport on it
 		if(this.marker.map == null){
 			currentLocation.marker.setMap(null);
+			this.marker.setAnimation(google.maps.Animation.DROP);
 			this.marker.setMap(map);
 			map.setCenter(this.latLng);
 			currentLocation = this;
