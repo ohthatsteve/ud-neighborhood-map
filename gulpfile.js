@@ -1,20 +1,10 @@
 var gulp = require('gulp'),
-	minify = require('gulp-minify'),
-	concat = require('gulp-concat');
+	minify = require('gulp-minify');
 
-gulp.task('default', function() {
-
-})
-
-gulp.task('oneScript', function() {
-
-	gulp.src('src/js/*.js')
-		.pipe(concat('script.js'))
-		.pipe(gulp.dest('src/js/'))
-})
+gulp.task('default', ['mini']);
 
 gulp.task('mini', function() {
-	gulp.src('src/js/script.js')
+	gulp.src('src/js/app.js')
 		.pipe(minify({
 			ext: {
 				src: '-source.js',
@@ -22,6 +12,4 @@ gulp.task('mini', function() {
 			}
 		}))
 		.pipe(gulp.dest('dist/js'))
-})
-
-gulp.task('dist',['oneScript','mini']);
+});
