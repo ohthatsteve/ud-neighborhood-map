@@ -1,0 +1,22 @@
+{
+  "name": "neighborhood-map",
+  "version": "1.0.0",
+  "description": "Udacity Neighborhood Map project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ohthatsteve/ud-neighborhood-map.git"
+  },
+  "author": "Steven Cooper",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ohthatsteve/ud-neighborhood-map/issues"
+  },
+  "homepage": "https://github.com/ohthatsteve/ud-neighborhood-map#readme",
+  "devDependencies": {
+    "gulp-minify": "0.0.14"
+  }
+}
