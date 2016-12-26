@@ -13,7 +13,7 @@
 		<span id = "nav-icon" class = "open" data-bind = "click: toggleNav">►</span>
 		<div id="nav-content">
 			<div id="nav-catagories" data-bind = "foreach: catagories">
-				<a class = "nav-catagories-icon" data-bind = "text:icon, click: $parent.showCatagory"></a>
+				<a class = "nav-catagories-icon" data-bind = "text:icon, click: $parent.showCatagory, css:{active: active()}"></a>
 			</div>
 				<ul id = "nav-list" data-bind = "foreach: locationArray">
 					<li class = "nav-list-item" data-bind = "visible: active">

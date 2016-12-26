@@ -14,7 +14,7 @@ body{
 	text-align: center;
 	visibility: visible;
 	opacity: .25;
-	transition: opacity .5s, visibility .5s;
+	transition: opacity 1s, visibility 1s;
 }
 
 #header.fade-out{
@@ -45,8 +45,8 @@ body{
 	opacity: .8;	
 	padding-top: 20px;
 	padding-right: 20px; 
-	-webkit-transition: width .5s, height .5s;
-    transition: width .5s, height .5s;
+	-webkit-transition: width .5s, height .5s, top .5s;
+    transition: width .5s, height .5s, top .5s;
     overflow-y: scroll;
     overflow-x: hidden; 
     font-family: Arial, sans-serif;
@@ -56,6 +56,7 @@ body{
 	width: 70px;
 	height: 60px;
 	overflow: hidden;
+	top: 47vh;
 }
 
 .hidden{
@@ -69,12 +70,16 @@ body{
 	float: right;
     transition-delay: .175s;
     transition-duration: .325s;
+    position: fixed;
+    top: 49vh;
+    left: 35px;
 	
 }
 
 #nav-icon.open{
-    -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+    -webkit-transform: rotate(180deg);
     transform: rotate(180deg);
+	left: 250px;
 }
 
 
@@ -91,6 +96,7 @@ a{
 }
 
 .active{
+	color: #09f;
 	text-shadow: 0 0 3px #09f;
 }
 
@@ -111,6 +117,19 @@ a{
 	padding-right: 3px;
 }
 
-@media (min-height: 650px) {
+.info-window{
 	
+}
+
+.info-window-title{
+	font-family: Marvel, sans-serif;
+	font-size: 22px;
+	float: right;
+	width: calc(90% - 125px);
+}
+.info-window-top-img{
+	width: 125px;
+	height: 125px;
+	border: 1px solid black;
+	float: left;
 }

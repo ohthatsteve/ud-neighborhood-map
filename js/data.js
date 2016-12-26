@@ -77,11 +77,11 @@ var initialLocations = [{
 var catagories = [{
 	type: 'restaurant',
 	icon: '🍽',
-	active: false
+	active: ko.observable(false)
 },{
 	type: 'store',
 	icon: '🛍',
-	active: false
+	active: ko.observable(false)
 }];
 
 //Map style to remove Google's points of interest and make the map prettier, generated from https://mapstyle.withgoogle.com/
