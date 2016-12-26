@@ -40,7 +40,7 @@ function getImgUrl(data, self) {
          'maxHeight': 250
       })
    } else {
-      imgUrl = 'http://maps.googleapis.com/maps/api/streetview?size=400x200&location=' + self.address;
+      imgUrl = 'https://maps.googleapis.com/maps/api/streetview?size=400x200&location=' + self.address;
    }
    return imgUrl;
 }
